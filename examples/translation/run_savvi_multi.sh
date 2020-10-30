@@ -38,5 +38,5 @@ CUDA_VISIBLE_DEVICES=0,1 fairseq-train \
     --num-workers 2 --save-dir output 
 
 fairseq-generate data-bin/iwslt14.tokenized.de-en \
-    --path checkpoints/checkpoint_best.pt --fp16 \
+    --path output/checkpoint_best.pt --fp16 \
     --batch-size 128 --beam 5 --remove-bpe True --quiet
