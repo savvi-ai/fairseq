@@ -24,7 +24,7 @@ CUDA_VISIBLE_DEVICES=0,1 fairseq-train \
     data-bin/iwslt14.tokenized.de-en \
     --arch transformer_iwslt_de_en --share-decoder-input-output-embed \
     --optimizer adam --adam-betas '(0.9, 0.98)' --clip-norm 0.0 \
-    --fp16 --max-epoch 1 \
+    --fp16 --max-epoch 2 \
     --lr 5e-4 --lr-scheduler inverse_sqrt --warmup-updates 4000 \
     --dropout 0.3 --weight-decay 0.0001 \
     --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=0,1 fairseq-train \
     --eval-bleu-detok moses \
     --eval-bleu-remove-bpe \
     --eval-bleu-print-samples \
-    --best-checkpoint-metric bleu --maximize-best-checkpoint-metric \
+    --best-checkpoint-metric bleu --maximize-best-checkpoint-metric --keep-best-checkpoints 1 \
     --num-workers 2 --save-dir output
 
 ls output
